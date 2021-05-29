@@ -2,26 +2,46 @@ import React, { useState } from "react";
 import data from "../../../data";
 
 const UseStateArray = () => {
-  const [people, setPeople] = useState(data);
-  // console.log(data);
-  // console.log(people);
+  let [people, setPeople] = useState(data);
+
+  const clickHandler = () => {
+    console.log("clicked");
+    setPeople([]);
+  };
+
+  const removeItem = (id) => {
+    console.log("removed item btn clicked: " + id);
+    let newPeople = people.filter(function (person) {
+      console.log("person.id: ", person.id);
+      console.log("id: ", id);
+      return person.id !== id;
+    });
+    console.log(newPeople);
+    // setPeople(newPeople);
+  };
+
   return (
-    <>
-      {people.map((person) => {
+    <div>
+      {people.map(function (person) {
         const { id, name } = person;
-        console.log(id, name);
+        {
+          /* console.log(id);
+        console.log(name); */
+        }
         return (
           <div key={id} className="item">
-            <h4>{name}</h4>
-            {/* <button className="btn">Delete</button> */}
+            <h3>{name}</h3>
+            <button className="btn" onClick={() => removeItem(id)}>
+              Remove
+            </button>
           </div>
         );
       })}
 
-      <button className="btn" type="button" onClick={() => setPeople([])}>
-        Click
+      <button className="btn" onClick={clickHandler}>
+        CLICK
       </button>
-    </>
+    </div>
   );
 };
 
