@@ -1,19 +1,14 @@
 import React from "react";
 
 const ErrorExample = () => {
-  let title = "random title";
-
+  const title = "Random Title";
   const handleClick = () => {
-    console.log(title);
-    title = "title has been changed";
+    console.log("Hello");
   };
-
   return (
     <React.Fragment>
       <h2>{title}</h2>
-      <button type="button" className="btn" onClick={handleClick}>
-        Click
-      </button>
+      <button onClick={handleClick}>Click</button>
     </React.Fragment>
   );
 };

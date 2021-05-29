@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 
 const UseStateBasics = () => {
-  // const value = "helloworld";
-  // const value2 = useState(1);
-  // console.log(useState(value));
-  // console.log(value2);
-  // console.log(value2[0]);
+  console.log(useState("helloWorld"));
 
-  const [text, setText] = useState("hello");
+  const [data, setData] = useState("happy world");
+  console.log(data);
+  console.log(setData);
 
   const handleClick = () => {
     console.log("hello");
-    if (text === "hello") {
-      setText("hello world");
-    } else if (text === "hello world") {
-      setText("hello");
+    if (data === "happy world") {
+      setData("hello world");
+    } else {
+      setData("happy world");
     }
   };
 
   return (
-    <React.Fragment>
-      <h1>{text}</h1>
-      <button type="button" className="btn" onClick={handleClick}>
-        Click
+    <div>
+      <h2>{data}</h2>
+      <button className="btn" onClick={handleClick}>
+        Change Title
       </button>
-    </React.Fragment>
+    </div>
   );
 };
 
