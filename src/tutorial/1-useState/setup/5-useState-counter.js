@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 
 const UseStateCounter = () => {
-  console.log("counter");
-
   let [number, setNumber] = useState(0);
-  console.log(number);
 
   let decrement = () => {
-    console.log("decrement");
     setNumber(--number);
   };
 
   let increment = () => {
-    console.log("decrement");
     setNumber(++number);
+  };
+
+  const reset = () => {
+    setNumber(0);
   };
 
   return (
     <div>
-      <button className="decrement" onClick={decrement}>
+      <h1>{number}</h1>
+      <button className="decrement btn" onClick={decrement}>
         <h1>-</h1>
       </button>
-      <h1>{number}</h1>
-      <button className="increment" onClick={increment}>
+      <button className="reset btn" onClick={reset}>
+        <h1>Reset</h1>
+      </button>
+      <button className="increment btn" onClick={increment}>
         <h1>+</h1>
       </button>
     </div>
