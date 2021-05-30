@@ -12,12 +12,12 @@ const UseStateArray = () => {
   const removeItem = (id) => {
     console.log("removed item btn clicked: " + id);
     let newPeople = people.filter(function (person) {
-      console.log("person.id: ", person.id);
-      console.log("id: ", id);
+      // console.log("person.id: ", person.id);
+      // console.log("id: ", id);
       return person.id !== id;
     });
     console.log(newPeople);
-    // setPeople(newPeople);
+    setPeople(newPeople);
   };
 
   return (
