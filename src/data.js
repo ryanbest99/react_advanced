@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   { id: 1, name: "anna" },
   { id: 2, name: "belle" },
   { id: 3, name: "cathy" },
@@ -7,4 +7,4 @@ const data = [
   { id: 6, name: "Fred" },
 ];
 
-export default data;
+// export default data;
