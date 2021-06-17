@@ -12,7 +12,7 @@ function Index2() {
   const defaultState = {
     people: [],
     isModalOpen: false,
-    modalContent: "hello world",
+    modalContent: "",
   };
 
   const [name, setName] = useState("");
@@ -25,7 +25,7 @@ function Index2() {
 
   return (
     <>
-      {/* {showModal && <Modal />} */}
+      {state.isModalOpen && <Modal modalContent={state.modalContent} />}
       <form onSubmit={handleSubmit}>
         <div>
           <input
