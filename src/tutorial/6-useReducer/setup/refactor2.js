@@ -4,7 +4,7 @@ import { data } from "../../../data";
 
 // reducer function
 function Index2() {
-  const reducer = () => {
+  const reducer = (state, action) => {
     console.log("hi");
     console.log("hi2");
   };
