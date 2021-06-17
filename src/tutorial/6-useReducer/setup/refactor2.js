@@ -6,6 +6,7 @@ import { data } from "../../../data";
 function Index2() {
   const reducer = () => {
     console.log("hello");
+    console.log("hello2");
   };
 
   const defaultState = {
