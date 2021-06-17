@@ -4,7 +4,18 @@ import { data } from "../../../data";
 
 // reducer function
 function Index2() {
+  const reducer = () => {
+    console.log("hello");
+  };
+
+  const defaultState = {
+    people: [],
+    isModalOpen: false,
+    modalContent: "hello world",
+  };
+
   const [name, setName] = useState("");
+  const [state, dispatch] = useReducer(reducer, defaultState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
