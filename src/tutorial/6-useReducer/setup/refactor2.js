@@ -5,8 +5,7 @@ import { data } from "../../../data";
 // reducer function
 function Index2() {
   const reducer = (state, action) => {
-    console.log("hi");
-    console.log("hi2");
+    console.log("hello world");
   };
 
   const defaultState = {
