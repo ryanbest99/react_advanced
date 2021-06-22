@@ -1,5 +1,5 @@
 import React from "react";
-import Setup from "./tutorial/6-useReducer/setup/refactor2";
+import Setup from "./tutorial/6-useReducer/setup/addItem";
 function App() {
   return (
     <div className="container">
