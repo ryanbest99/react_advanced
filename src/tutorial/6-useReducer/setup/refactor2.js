@@ -4,7 +4,18 @@ import { data } from "../../../data";
 
 // reducer function
 function Index2() {
+  const reducer = (state, action) => {
+    console.log("hello world");
+  };
+
+  const defaultState = {
+    people: [],
+    isModalOpen: false,
+    modalContent: "",
+  };
+
   const [name, setName] = useState("");
+  const [state, dispatch] = useReducer(reducer, defaultState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +24,7 @@ function Index2() {
 
   return (
     <>
-      {/* {showModal && <Modal />} */}
+      {state.isModalOpen && <Modal modalContent={state.modalContent} />}
       <form onSubmit={handleSubmit}>
         <div>
           <input
