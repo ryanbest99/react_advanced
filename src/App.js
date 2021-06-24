@@ -1,5 +1,5 @@
 import React from "react";
-import Setup from "./tutorial/6-useReducer/setup4/remove";
+import Setup from "./tutorial/8-useContext/setup/2-context";
 
 function App() {
   return (
