@@ -1,27 +1,37 @@
 import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
-import { data } from "../../../data";
 
 const reducer = (state, action) => {
-  //
-  if (action.type === "ADDED_VALUE") {
-    //     return { ...state, showModal: true, modalContent: "added successfully" };
+  if (action.type === "ADD_ITEM") {
+    //     const newPeople = action.payload;
     const newPeople = [...state.people, action.payload];
     return {
       ...state,
       people: newPeople,
       showModal: true,
-      modalContent: "added successfully",
+      modalContent: "Item Added",
     };
   }
 
-  if (action.type === "NO_VALUE") {
-    //     return { ...state, showModal: true, modalContent: "added successfully" };
+  if (action.type === "NO_ITEM") {
+    return { ...state, showModal: true, modalContent: "NO ITEM" };
+  }
+
+  if (action.type === "REMOVE_ITEM") {
+    const newPeople = state.people.filter(function (person) {
+      return person.id !== action.payload;
+    });
+
     return {
       ...state,
+      people: newPeople,
       showModal: true,
-      modalContent: "No Value",
+      modalContent: "Item Deleted",
     };
+  }
+
+  if (action.type === "CLOSE_MODAL") {
+    return { ...state, showModal: false };
   }
 };
 
@@ -32,27 +42,35 @@ const initialState = {
 };
 
 function Index() {
-  //   const [people, setPeople] = useState(data);
-  //   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
+    console.log("hihi");
 
     if (name) {
       const newPerson = { id: new Date().getTime().toString(), name: name };
-      dispatch({ type: "ADDED_VALUE", payload: newPerson });
+      dispatch({ type: "ADD_ITEM", payload: newPerson });
       setName("");
     } else {
-      dispatch({ type: "NO_VALUE" });
+      dispatch({ type: "NO_ITEM" });
     }
+  };
+
+  const removeItem = (id) => {
+    dispatch({ type: "REMOVE_ITEM", payload: id });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: "CLOSE_MODAL" });
   };
 
   return (
     <>
-      {state.showModal && <Modal modalContent={state.modalContent} />}
+      {state.showModal && (
+        <Modal closeModal={closeModal} modalContent={state.modalContent} />
+      )}
       <form>
         <div>
           <input
@@ -66,9 +84,11 @@ function Index() {
         </button>
       </form>
       {state.people.map(function (person) {
+        const { id, name } = person;
         return (
-          <div key={person.id}>
-            <h3>{person.name}</h3>
+          <div key={id}>
+            <h4>{name}</h4>
+            <button onClick={() => removeItem(id)}>Remove</button>
           </div>
         );
       })}

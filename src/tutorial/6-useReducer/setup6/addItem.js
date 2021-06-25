@@ -1,27 +1,20 @@
 import React, { useState, useReducer } from "react";
 import Modal from "./Modal";
-import { data } from "../../../data";
 
 const reducer = (state, action) => {
-  //
-  if (action.type === "ADDED_VALUE") {
-    //     return { ...state, showModal: true, modalContent: "added successfully" };
+  if (action.type === "ADD_ITEM") {
+    //     const newPeople = action.payload;
     const newPeople = [...state.people, action.payload];
     return {
       ...state,
       people: newPeople,
       showModal: true,
-      modalContent: "added successfully",
+      modalContent: "Item Added",
     };
   }
 
-  if (action.type === "NO_VALUE") {
-    //     return { ...state, showModal: true, modalContent: "added successfully" };
-    return {
-      ...state,
-      showModal: true,
-      modalContent: "No Value",
-    };
+  if (action.type === "NO_ITEM") {
+    return { ...state, showModal: true, modalContent: "NO ITEM" };
   }
 };
 
@@ -32,21 +25,18 @@ const initialState = {
 };
 
 function Index() {
-  //   const [people, setPeople] = useState(data);
-  //   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
+    console.log("hihi");
 
     if (name) {
       const newPerson = { id: new Date().getTime().toString(), name: name };
-      dispatch({ type: "ADDED_VALUE", payload: newPerson });
-      setName("");
+      dispatch({ type: "ADD_ITEM", payload: newPerson });
     } else {
-      dispatch({ type: "NO_VALUE" });
+      dispatch({ type: "NO_ITEM" });
     }
   };
 
@@ -68,7 +58,7 @@ function Index() {
       {state.people.map(function (person) {
         return (
           <div key={person.id}>
-            <h3>{person.name}</h3>
+            <h4>{person.name}</h4>
           </div>
         );
       })}
