@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useFetch } from "./2-useFetch";
 import useFetch from "./2-useFetch";
 
 // ATTENTION!!!!!!!!!!
